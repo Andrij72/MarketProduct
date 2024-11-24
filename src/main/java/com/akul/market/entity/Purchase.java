@@ -29,6 +29,6 @@ public class Purchase {
 
     @ManyToOne
     @JoinColumn(name = "buyer_id", referencedColumnName = "id")
-    private Purchase buyer;
+    private Buyer buyer;
 
 }

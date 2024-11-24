@@ -14,7 +14,6 @@ import com.akul.market.service.BuyerService;
 
 import java.util.List;
 
-// для тестирования работы приложения через веб - какие данные возвращаются из БД
 
 @RestController
 @RequestMapping("/buyer")
@@ -27,38 +26,56 @@ public class BuyerController {
     }
 
 
-    // Поиск покупателей по фамилии
+    /**
+     * Search for buyers by last name
+     */
+
     @PostMapping("/findByName")
     public ResponseEntity<List<Buyer>> findByName(@RequestBody String text) {
         return ResponseEntity.ok(buyerService.findByName(text));
     }
 
-    // Поиск покупателей, купивших товар не менее, чем указанное число раз
+    /**
+     * Search for customers who have purchased the product
+     * at least the specified number of times
+     */
     @PostMapping("/findByProduct")
     public ResponseEntity<List<Buyer>> findBuyerByProduct(@RequestBody FindBuyerByProduct searchFields) {
-        return ResponseEntity.ok(buyerService.findBuyerByProduct(searchFields.getProductName(),searchFields.getMinPurchases()));
+        return ResponseEntity.ok(buyerService.findBuyerByProduct(searchFields.getProductName(), searchFields.getMinPurchases()));
     }
 
-    // Поиск покупателей, у которых общая стоимость всех покупок за всё время попадает в интервал (>мин, <макс)
+    /***
+     * Find customers whose total purchase value for all time falls within
+     * the interval (min, max)
+     * @param searchFields
+     * @return
+     */
+
     @PostMapping("/findMinMax")
     public ResponseEntity<List<Buyer>> findMaxMin(@RequestBody FindBuyerByMinMax searchFields) {
         return ResponseEntity.ok(buyerService.findMinMax(searchFields.getMinSum(), searchFields.getMaxSum()));
     }
 
-
-    // Поиск покупателей, купивших меньше всего товаров. Возвращается не более, чем указанное число покупателей.
+    /***
+     * Find the customers who bought the least amount of items. Returns no more
+     * than the specified number of customers.
+     * @param limit
+     * @return
+     */
     @PostMapping("/findBad")
     public ResponseEntity<List<Buyer>> findBad(@RequestBody Integer limit) {
         return ResponseEntity.ok(buyerService.findBad(limit));
     }
 
-
-    // Cтатистика по покупателям за период (кто чего и сколько купил в сумме)
+    /***
+     * Statistics on buyers for the period (who bought what and how much in total)
+     * @param buyerByDates
+     * @return
+     */
     @PostMapping("/buyerStat")
     public ResponseEntity<List<BuyerRepository.BuyerStatJSON>> buyersByDate(@RequestBody FindBuyerByDates buyerByDates) {
         return ResponseEntity.ok(buyerService.buyersByDate(buyerByDates.getDateFrom(), buyerByDates.getDateTo()));
     }
-
 
 
 }

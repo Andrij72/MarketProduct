@@ -1,15 +1,14 @@
 package com.akul.market.service;
 
 import com.akul.market.entity.Buyer;
+import com.akul.market.repository.BuyerRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import com.akul.market.repository.BuyerRepository;
 
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -49,6 +48,7 @@ public class BuyerService {
      * @return
      */
     public List<Buyer> findMinMax(long min, long max) {
+
         return buyerRepository.findMinMax(min, max);
     }
 

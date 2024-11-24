@@ -1,16 +1,16 @@
 package com.akul.market.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import com.akul.market.entity.Buyer;
 import com.akul.market.repository.BuyerRepository;
 import com.akul.market.search.FindBuyerByDates;
 import com.akul.market.search.FindBuyerByMinMax;
 import com.akul.market.search.FindBuyerByProduct;
 import com.akul.market.service.BuyerService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -67,15 +67,20 @@ public class BuyerController {
         return ResponseEntity.ok(buyerService.findBad(limit));
     }
 
-    /***
-     * Statistics on buyers for the period (who bought what and how much in total)
-     * @param buyerByDates
-     * @return
+    /**
+     * Provides statistics on buyers for a given period, including what they bought and the total quantity.
+     *
+     * @param buyerByDates the date range to filter buyers
+     * @return a list of buyer statistics in JSON format
      */
     @PostMapping("/buyerStat")
-    public ResponseEntity<List<BuyerRepository.BuyerStatJSON>> buyersByDate(@RequestBody FindBuyerByDates buyerByDates) {
-        return ResponseEntity.ok(buyerService.buyersByDate(buyerByDates.getDateFrom(), buyerByDates.getDateTo()));
+    public ResponseEntity<List<BuyerRepository.BuyerStatJSON>> buyersByDate(
+            @RequestBody FindBuyerByDates buyerByDates) {
+        return ResponseEntity.ok(
+                buyerService.buyersByDate(
+                        buyerByDates.getDateFrom(),
+                        buyerByDates.getDateTo()
+                )
+        );
     }
-
-
 }

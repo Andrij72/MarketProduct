@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BuyerResult {
+
     private Object criteria;
     private List<Buyer> results = new ArrayList<>();
 }

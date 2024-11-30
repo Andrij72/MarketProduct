@@ -33,7 +33,7 @@ public interface BuyerRepository extends JpaRepository<Buyer, Long> {
             where pu.product.name=:productName
             group by b 
             having count(b)>=:minPurchases
-            """, nativeQuery = true)
+            """)
     List<Buyer> findBuyerByProduct(@Param("productName") String productName, @Param("minPurchases") Long minPurchases);
 
     @Query(value = """

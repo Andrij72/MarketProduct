@@ -1,5 +1,6 @@
 package com.akul.market.service;
 
+import com.akul.market.json.search.BuyerResult;
 import com.akul.market.json.search.SearchResult;
 import com.akul.market.json.stat.Customer;
 import com.akul.market.json.stat.Stat;
@@ -23,8 +24,41 @@ public class JsonService {
         this.buyerService = buyerService;
     }
 
-    public SearchResult searchJson(LinkedHashMap<String, List<Object>> searchCriteria) {
-        return null;
+    public SearchResult searchJson(LinkedHashMap<String, List<Object>> requestMap) {
+        SearchResult searchResult = new SearchResult();
+
+        List<Object> criterias = requestMap.get("criterias");
+        for (Object creteria : criterias) {
+            LinkedHashMap<String, Object> mapCriteria = (LinkedHashMap<String, Object>) creteria;
+            BuyerResult criteriaResult = new BuyerResult();
+            criteriaResult.setCriteria(creteria);
+
+            if (mapCriteria.containsKey("lastName")) {
+                criteriaResult.setResults(buyerService.findByName(mapCriteria.get("lastName").toString()));
+            }
+            else if (mapCriteria.containsKey("productName")) {
+                criteriaResult.setResults(
+                        buyerService.findBuyerByProduct(
+                                mapCriteria.get("productName").toString(),
+                                Long.valueOf(mapCriteria.get("minTimes").toString())
+                        ));
+            }
+            else if (mapCriteria.containsKey("badCustomers")) {
+                criteriaResult.setResults(buyerService.findBad(
+                        Integer.valueOf(mapCriteria.get("badCustomers").toString())
+                ));
+            }
+            else if (mapCriteria.containsKey("minExpenses")) {
+                    criteriaResult.setResults(buyerService.findMinMax(
+                            Long.valueOf(mapCriteria.get("minExpenses").toString()),
+                            Long.valueOf(mapCriteria.get("maxExpenses").toString())
+                    ));
+                }
+
+            searchResult.getResults().add(criteriaResult);
+        }
+
+        return searchResult;
     }
 
     public Stat statJson(Date dateFrom, Date dateTo) {

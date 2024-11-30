@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SearchResult {
-
     private String type = "search";
     private List<BuyerResult> results = new ArrayList<>();
 }

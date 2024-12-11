@@ -3,7 +3,6 @@ package com.akul.market.service;
 import com.akul.market.entity.Buyer;
 import com.akul.market.repository.BuyerRepository;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -59,9 +58,8 @@ public class BuyerService {
      * @return
      */
     public List<Buyer> findBad(int count) {
-        Sort sort = Sort.by(Sort.Direction.ASC, "id");
-        PageRequest pageRequest = PageRequest.of(0, count, sort);
-        return buyerRepository.findBad(pageRequest).getContent();
+        PageRequest pageRequest = PageRequest.of(0, count);
+        return buyerRepository.findBuyersWithFewestPurchases(pageRequest).getContent();
     }
 
     /**

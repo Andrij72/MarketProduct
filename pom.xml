@@ -70,7 +70,7 @@
                 <version>2.7.5</version>
 
                 <configuration>
-                    <mainClass>com.akul.market.WebApplication</mainClass>
+                    <mainClass>com.akul.market.CLIApp</mainClass>
                 </configuration>
 
                 <executions>

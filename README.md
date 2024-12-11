@@ -9,7 +9,7 @@ The application works in two modes:
 - web (call via browser or Postman)
 - command line (call via console)
 
-Example of launching java -jar program.jar search input.json output.json
+###### _Example of launching java:_ `-jar program.jar search input.json output.json`
 
 Used stack: Java, PostgreSQL, Maven, SpringBoot, Jupiter, Mokito.
 

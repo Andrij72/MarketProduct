@@ -45,11 +45,13 @@ public interface BuyerRepository extends JpaRepository<Buyer, Long> {
             having sum(pr.cost) < :max and sum(pr.cost) > :min """, nativeQuery = true)
     List<Buyer> findMinMax(Long min, Long max);
 
-    @Query("select b from Buyer b " +
-            "left join b.purchases pu  " +
-            " group by b order by count(pu.id) asc")
-    Page<Buyer> findBad(Pageable page);
-
+    @Query(value = """
+            select b from Buyer b 
+            left join b.purchases pu 
+            group by b
+            order by count(pu.id) asc, b.id asc
+            """)
+    Page<Buyer> findBuyersWithFewestPurchases(Pageable page);
 
     public interface BuyerStatJSON {
         @JsonIgnore

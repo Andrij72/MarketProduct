@@ -34,7 +34,7 @@ public class JsonStatServiceTest {
     @Test
     void testStatJson_WithAnonimClass() {
         // Устанавливаем даты для теста
-        Date dateFrom = new Date(System.currentTimeMillis() - 86400000L * 30); // 30 дней назад
+        Date dateFrom = new Date(System.currentTimeMillis() - 86400000L * 30); // 30 days ago
         Date dateTo = new Date();
 
         List<BuyerRepository.BuyerStatJSON> buyers = Arrays.asList(

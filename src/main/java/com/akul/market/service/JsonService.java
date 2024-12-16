@@ -96,13 +96,8 @@ public class JsonService {
             long cutomerTotalExpenses = 0;
             for (BuyerRepository.BuyerStatJSON purchase : entry.getValue()) {
                 cutomerTotalExpenses += purchase.getExpenses();
-                // подсумма для конкретного покупателя (по всем его товарам)
                 customer.setTotalExpenses(cutomerTotalExpenses);
-
-                // общая сумма всех товаров всех покупателей
                 totalExpensesAll += cutomerTotalExpenses;
-
-                // добавляем в общую коллекцию customers
                 customers.add(customer);
             }
             stat.setTotalExpenses(totalExpensesAll);

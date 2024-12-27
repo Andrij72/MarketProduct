@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "5826f179-b164-4a58-9b27-502e0c0902d8",
+		"name": "shop-search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7173855"
+	},
+	"item": [
+		{
+			"name": "findByName",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "ith",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6900/buyer/findByName",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6900",
+					"path": [
+						"buyer",
+						"findByName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findByProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productName\": \"Meat\",\r\n    \"minPurchases\": \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6900/buyer/findByProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6900",
+					"path": [
+						"buyer",
+						"findByProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findMinMax",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"minSum\": 30,\r\n    \"maxSum\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6900/buyer/findMinMax",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6900",
+					"path": [
+						"buyer",
+						"findMinMax"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findBad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6900/buyer/findBad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6900",
+					"path": [
+						"buyer",
+						"findBad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchWithJson",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"criterias\": [\r\n\r\n        {\r\n            \"lastName\": \"ith\"\r\n        },\r\n\r\n\r\n        {\r\n            \"productName\": \"Meat\",\r\n            \"minTimes\": 2\r\n        },\r\n\r\n\r\n        {\r\n            \"minExpenses\": 30,\r\n            \"maxExpenses\": 100\r\n        },\r\n\r\n\r\n        {\r\n            \"badCustomers\": 1\r\n        },\r\n\r\n\r\n        {\r\n            \"lastName\": \"e\"\r\n        },\r\n\r\n        {\r\n            \"minExpenses\": 200,\r\n            \"maxExpenses\": 400\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5700/json/searchWithJson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5700",
+					"path": [
+						"json",
+						"searchWithJson"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

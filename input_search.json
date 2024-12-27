@@ -1,0 +1,8 @@
+{
+	"criterias": [ 
+	    {"lastName": "ith"},
+		          {"productName": "Milch", "minTimes": 2}, 
+	    {"minExpenses": 100, "maxExpenses": 600}, 
+	          {"badCustomers": 2}
+      ]
+}

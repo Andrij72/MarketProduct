@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "864bcd27-55f8-4ef9-a69e-4203255166a5",
+		"name": "shop-stat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7173855"
+	},
+	"item": [
+		{
+			"name": "buyerStat-1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dateFrom\": \"2024-01-01\",\r\n    \"dateTo\": \"2024-12-12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6900/buyer/buyerStat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6900",
+					"path": [
+						"buyer",
+						"buyerStat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buyerStatJson",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dateFrom\": \"2024-01-01\",\r\n    \"dateTo\": \"2024-12-12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6900/json/buyerStatJson",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6900",
+					"path": [
+						"json",
+						"buyerStatJson"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

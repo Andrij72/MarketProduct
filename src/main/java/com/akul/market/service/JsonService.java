@@ -100,13 +100,15 @@ public class JsonService {
                 totalExpensesAll += cutomerTotalExpenses;
                 customers.add(customer);
             }
-            stat.setTotalExpenses(totalExpensesAll);
+            stat.setSummaryTotalExpenses(totalExpensesAll);
 
             double avgExpenses = 0;
 
             if (totalExpensesAll != 0 && !customers.isEmpty()) {
                 avgExpenses = (double) totalExpensesAll / customers.size();
+                avgExpenses = Math.round(avgExpenses*100.0)/100.0;
             }
+            stat.setAvgTotalExpenses(avgExpenses);
         }
 
         return stat;
